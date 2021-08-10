@@ -1,0 +1,43 @@
+{% extends "layout.html" %}
+
+{% block title %}
+  History
+{% endblock %}
+
+{% block main %}
+  <div class="row">
+    <div class="offset-4 col-4 offset-lg-5 col-lg-2">
+      <img class="img-fluid" src="{{ url_for('static', filename='history.png') }}" alt="history">
+    </div>
+  </div>
+  <table class="table table-striped my-5">
+    <thead class="table-dark fw-bold">
+    <tr>
+      <th>Status</th>
+      <th>Symbol</th>
+      <th>Company</th>
+      <th>Shares</th>
+      <th>Price</th>
+      <th>Total</th>
+      <th>Date and Time</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for row in rows | reverse %}
+      <tr>
+        {% if row["flag"] %}
+          <td class="text-success">{{ "BOUGHT" if row["flag"] == 1 else "SOLD" }}</td>
+        {% else %}
+          <td class="text-danger">{{ "FAILED" }}</td>
+        {% endif %}
+        <td>{{ row["symbol"] }}</td>
+        <td>{{ row["company"] }}</td>
+        <td>{{ row["shares"] }}</td>
+        <td>{{ row["price"] | usd }}</td>
+        <td>{{ (row["shares"] * row["price"]) | round(2) | usd }}</td>
+        <td>{{ row["date_time"] }}</td>
+      </tr>
+    {% endfor %}
+    </tbody>
+  </table>
+{% endblock %}

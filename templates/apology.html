@@ -1,0 +1,16 @@
+{% extends "layout.html" %}
+
+{% block title %}
+  Apology
+{% endblock %}
+
+{% block main %}
+  <div class="row">
+    <div class="offset-2 col-8 offset-lg-4 col-lg-4">
+      <img alt="{{ top }}" class="img-fluid border"
+           src="https://memegen.link/custom/{{ top | urlencode }}/{{ bottom | urlencode }}.jpg?alt=https://i.imgur.com/CsCgN7Ll.png"
+           title="{{ top }}">
+    </div>
+  </div>
+
+{% endblock %}

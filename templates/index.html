@@ -1,0 +1,49 @@
+{% extends "layout.html" %}
+
+{% block title %}
+  Index
+{% endblock %}
+
+{% block main %}
+  <div class="container row">
+    <div class="offset-4 col-4 offset-lg-5 col-lg-2">
+      <img class="img-fluid" src="{{ url_for('static', filename='index.png') }}" alt="index">
+    </div>
+  </div>
+  <table class="table table-striped my-5">
+    <thead class="table-dark fw-bold">
+    <tr>
+      <th></th>
+      <th>Symbol</th>
+      <th>Company</th>
+      <th>Shares</th>
+      <th>Price</th>
+      <th>Total</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for row in rows | reverse %}
+      <tr>
+        <td></td>
+        <td>{{ row["symbol"] }}</td>
+        <td>{{ row["company"] }}</td>
+        <td>{{ row["shares"] }}</td>
+        <td>{{ row["price"] | usd }}</td>
+        <td>{{ (row["shares"] * row["price"]) | round(2) | usd }}</td>
+      </tr>
+    {% endfor %}
+    </tbody>
+    <tfoot class="fw-bold">
+    <tr class="table-primary">
+      <td>CASH</td>
+      <td colspan="4"></td>
+      <td>{{ cash | usd }}</td>
+    </tr>
+    <tr class="table-dark">
+      <td>TOTAL</td>
+      <td colspan="4"></td>
+      <td>{{ (stock + cash) | round(2) | usd }}</td>
+    </tr>
+    </tfoot>
+  </table>
+{% endblock %}

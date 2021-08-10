@@ -1,2 +1,3 @@
-# StockersStop
-PPL Mini Project
+# StockerShop
+
+## PPL Mini Project
