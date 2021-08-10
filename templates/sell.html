@@ -7,15 +7,15 @@
 {% block main %}
   <div class="row mb-5">
     <div class="offset-4 col-4 offset-lg-5 col-lg-2">
-      <img class="img-fluid" src="{{ url_for('static', filename='sell.png') }}" alt="sell">
+      <img alt="sell" class="img-fluid" src="{{ url_for('static', filename='sell.png') }}">
     </div>
   </div>
   <form action="/sell" method="post">
     <div class="form-group mb-1">
-      <select class="form-control form-select" autocomplete="off" autofocus name="symbol">
-        <option value="" selected>Symbol</option>
+      <select autocomplete="off" autofocus class="form-control form-select" name="symbol">
+        <option selected value="">---</option>
         {% for option in options %}
-          <option value="{{ option["symbol"] }}">{{ option["symbol"] }}</option>
+          <option value="{{ option['symbol'] }}">{{ option["symbol"] }}</option>
         {% endfor %}
       </select>
     </div>

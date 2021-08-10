@@ -1,3 +1,3 @@
-# StockerShop
+# StockersStop
 
 ## PPL Mini Project

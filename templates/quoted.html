@@ -7,7 +7,7 @@
 {% block main %}
   <div class="row mb-5">
     <div class="offset-4 col-4 offset-lg-5 col-lg-2">
-      <img class="img-fluid" src="{{ url_for('static', filename='quoted.png') }}" alt="quoted">
+      <img alt="quoted" class="img-fluid" src="{{ url_for('static', filename='quoted.png') }}">
     </div>
   </div>
   <p>A share of ({{ symbol }}) costs {{ price | usd }}</p>
